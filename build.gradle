@@ -44,3 +44,19 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+graalvmNative {
+
+    binaries {
+        main {
+
+            resources.autodetect()
+            // TODO あとで設定するかも
+            def configJsonPath = file("${projectDir}/files/resource-config.json").absolutePath
+            //buildArgs.add("-H:ResourceConfigurationFiles=${configJsonPath}")
+            // ビルドのデバッグ用
+            buildArgs.add("-H:+ReportExceptionStackTraces")
+            buildArgs.add("-H:+UnlockExperimentalVMOptions")
+        }
+    }
+}
