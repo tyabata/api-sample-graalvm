@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: api-sample-graalvm
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
