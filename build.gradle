@@ -10,7 +10,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -50,13 +50,14 @@ graalvmNative {
     binaries {
         main {
 
+
             resources.autodetect()
             // TODO あとで設定するかも
+
             def configJsonPath = file("${projectDir}/files/resource-config.json").absolutePath
             //buildArgs.add("-H:ResourceConfigurationFiles=${configJsonPath}")
             // ビルドのデバッグ用
             buildArgs.add("-H:+ReportExceptionStackTraces")
-            buildArgs.add("-H:+UnlockExperimentalVMOptions")
         }
     }
 }
