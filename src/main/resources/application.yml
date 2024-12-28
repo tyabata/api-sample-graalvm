@@ -1,4 +1,7 @@
 spring:
+  ai:
+    llama-cpp:
+      model-path: models/ELYZA-japanese-Llama-2-7b-fast-instruct-q2_K.gguf
   application:
     name: api-sample-graalvm
 management:

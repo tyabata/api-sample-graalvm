@@ -16,6 +16,8 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 configurations {
@@ -27,6 +29,10 @@ configurations {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    implementation platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT")
+    implementation 'de.kherud:llama:2.3.1'
+    implementation 'org.springframework.ai:spring-ai-core'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
@@ -35,7 +41,6 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'io.micrometer:micrometer-registry-prometheus:1.14.2'
-
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -52,7 +57,6 @@ graalvmNative {
 
 
             resources.autodetect()
-            // TODO あとで設定するかも
 
             def configJsonPath = file("${projectDir}/files/resource-config.json").absolutePath
             buildArgs.add("-H:ResourceConfigurationFiles=${configJsonPath}")
